@@ -1,5 +1,7 @@
 <template>
-   <h1> {{city}} Nöbetçi Eczaneler</h1>
+<div class="container-fluid text-center">
+    <Header></Header>
+   <h1 class="mb-5"> {{city}} Nöbetçi Eczaneler</h1>
       <!-- <li v-for="(pharmacys, i) in dutyPharmacy[0]" :key="i"> -->
   <!-- <ul>
     <li v-for="(pharmacys, i) in dutyPharmacy" :key="i">
@@ -11,6 +13,7 @@
     </li>
   </ul>  -->
   <TurkeyMap></TurkeyMap>
+  </div>
 </template>
 
 <script>
@@ -18,9 +21,11 @@
 import { ref, reactive ,computed ,watch } from "vue";
 import {useStore} from 'vuex';
 import TurkeyMap from './TurkeyMap';
+import Header from './Header';
 export default {
   components:{
-    TurkeyMap
+    TurkeyMap,
+    Header
   },
   setup() {
     const store = useStore();
@@ -51,4 +56,8 @@ export default {
 };
 </script>
 <style>
+.container-fluid{
+  /* width:100% !important; */
+   padding:0 !important;
+}
 </style>

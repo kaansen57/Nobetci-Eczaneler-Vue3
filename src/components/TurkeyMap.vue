@@ -9,7 +9,7 @@
       viewBox="0 0 1007.478 527.323"
       xml:space="preserve"
     >
-      <g id="turkiye" @click="clickedDistrict">
+      <g id="turkiye" @click="clickedDistrict" :onmouseover="clickedDistrict">
         <g
           id="adana"
           data-plakakodu="01"
@@ -845,24 +845,26 @@ export default {
     const clickedDistrict = (event) => {
       const city = event.path[1].id;
       const cityText = event.path[1].attributes[3].value;
-      store.dispatch("cityChange", city);
       store.commit("setCityText", cityText);
+      if (event.type === "click") {
+          store.dispatch("cityChange", city);
       const config = {
-        method: "get",
+        method: "GET",
         url: `https://www.nosyapi.com/apiv2/pharmacy?city=${city}`,
         headers: {
           Authorization:
             "C9uUw5h4aR5fJkPm7qansNXMCuKyk8dJNnFKgLZobOhTDHA7ZF9VB8jhXa0W",
         },
       };
-      // axios(config)
-      //   .then((res) => {
-      //     // dutyPharmacy.push(res.data.data);
-      //     console.log(res.data.data);
-      //   })
-      //   .catch((err) => {
-      //     console.error(err);
-      //   });
+        // axios(config)
+        // .then((res) => {
+        //   // dutyPharmacy.push(res.data.data);
+        //   console.log(res.data.data);
+        // })
+        // .catch((err) => {
+        //   console.error(err);
+        // });
+      }
     };
     return {
       clickedDistrict,
@@ -870,22 +872,24 @@ export default {
   },
 };
 </script>
-
 <style scoped >
 svg {
-  width: 80%;
+  width: 70%;
 }
 path {
-  fill: darkred;
+  fill: #333;
   stroke: white;
   pointer-events: all;
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
-  fill: rgb(219, 134, 134);
+  fill: rgb(172, 2, 2);
 }
-g:focus > path {
-  fill: gray;
+@media only screen and (max-width: 900px) {
+ svg {
+  width: 100%;
+    }
 }
+ 
 </style>
