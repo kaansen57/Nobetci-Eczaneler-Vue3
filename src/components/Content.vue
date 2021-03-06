@@ -3,7 +3,6 @@
       <!-- <li v-for="(pharmacys, i) in dutyPharmacy[0]" :key="i"> -->
   <!-- <ul>
     <li v-for="(pharmacys, i) in dutyPharmacy" :key="i">
-
       {{ pharmacys.EczaneAdi }}
       {{ pharmacys.Adresi }}
       {{ pharmacys.ilce }}
@@ -11,7 +10,6 @@
       {{ pharmacys.Telefon }}
     </li>
   </ul>  -->
-  
   <TurkeyMap></TurkeyMap>
 </template>
 
