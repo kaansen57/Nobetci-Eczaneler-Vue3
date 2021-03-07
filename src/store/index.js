@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     selectedCity : "",
-    selectedCityText : ""
+    selectedCityText : "",
+    data : []
   },
   getters:{
     getSelectedCity(state){
@@ -11,6 +12,9 @@ export default createStore({
     },
     getSelectedCityText(state){
       return state.selectedCityText;
+    },
+    getData(state){
+      return state.data;
     }
   },
   mutations: {
@@ -19,6 +23,10 @@ export default createStore({
     },
     setCityText(state,payload){
       state.selectedCityText = payload;
+    },
+    setData(state,payload){
+      state.data = [];
+      state.data.push(payload);
     }
   },
   actions: {
