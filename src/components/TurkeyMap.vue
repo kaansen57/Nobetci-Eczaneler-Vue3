@@ -1,5 +1,5 @@
 <template>
-  <div class="svg-turkiye-haritasi">
+  <div class="svg-turkiye-haritasi text-center">
     <svg
       version="1.1"
       id="svg-turkiye-haritasi"
