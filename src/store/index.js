@@ -2,16 +2,18 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    //Api request variable
     selectedCity : "",
-    selectedCityText : "",
+    selectedCityOnClick : "",
+    selectedCityOverChange : "",
     data : []
   },
   getters:{
     getSelectedCity(state){
       return state.selectedCity;
     },
-    getSelectedCityText(state){
-      return state.selectedCityText;
+    getSelectedCityOverChange(state){
+      return state.selectedCityOverChange;
     },
     getData(state){
       return state.data;
@@ -22,12 +24,15 @@ export default createStore({
       state.selectedCity = payload;
     },
     setCityText(state,payload){
-      state.selectedCityText = payload;
+      state.selectedCityOverChange = payload;
+    },
+    setSelectedCityOnClick(state,payload){
+      state.selectedCityOnClick = payload;
     },
     setData(state,payload){
       state.data = [];
       state.data.push(payload);
-    }
+    },
   },
   actions: {
     cityChange(context,payload){

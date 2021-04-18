@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid ">
+  <div class="content-wrapper">
     <Header></Header>
     <h1 class="mb-5 text-center">{{ city }} Nöbetçi Eczaneler</h1>
     <TurkeyMap></TurkeyMap>
@@ -22,7 +22,7 @@ export default {
   setup() {
     const store = useStore();
     const dutyPharmacy = computed(() => store.getters.getData);
-    const city = computed(() => store.getters.getSelectedCityText);
+    const city = computed(() => store.getters.getSelectedCityOverChange);
     return {
       city,
       dutyPharmacy,
@@ -31,7 +31,7 @@ export default {
 };
 </script>
 <style>
-.container-fluid {
-  padding: 0 !important;
+.content-wrapper{
+  
 }
 </style>

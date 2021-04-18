@@ -1,5 +1,7 @@
 <template>
-  <Content></Content>
+<div class="container-fluid">
+    <Content></Content>
+</div>
 </template>
 
 <script>
@@ -12,10 +14,17 @@ export default {
 }
 </script>
 
-<style>
+<style >
+@import "~normalize.css";
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+@font-face{
+    font-family:"Sofia Pro";
+    src:local("Sofia Pro"),
+        url("./fonts/Sofia/Sofia Pro Light Az.otf") format("truetype");
+}
 *{
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Sofia Pro', sans-serif;
+  box-sizing: border-box;
 }
 
 </style>

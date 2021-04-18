@@ -847,18 +847,19 @@ import axios from "axios";
 export default {
   setup() {
     const store = useStore();
+
     const clickedDistrict = (event) => {
       const city = event.path[1].id;
       const cityText = event.path[1].attributes[3].value;
       store.commit("setCityText", cityText);
       if (event.type === "click") {
+        store.commit("setSelectedCityOnClick",cityText);
         store.dispatch("cityChange", city);
         const config = {
           method: "GET",
           url: `${process.env.VUE_APP_API_URL + city}`,
           headers: {
             Authorization: process.env.VUE_APP_API_KEY
-              ,
           },
         };
         axios(config)
@@ -878,11 +879,11 @@ export default {
 </script>
 <style scoped >
 svg {
-  width: 70%;
+  width: 60%;
 }
 path {
-  fill: #333;
-  stroke: white;
+  fill: #FAFBFD;
+  stroke:  #b8b6b6;
   pointer-events: all;
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
