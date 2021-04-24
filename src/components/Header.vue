@@ -8,20 +8,24 @@
       <div class="menu-items">
         <ul>
           <a href="#"> <li class="active">Homepage</li></a>
-          <a href="#"> <li class="">Homepage</li></a>
-          <a href="#"> <li class="">Homepage</li></a>
-          <a href="#"> <li class="">Homepage</li></a>
+          <a href="#"> <li class="">All Pharmacy</li></a>
+          <a href="#"> <li class="">Contact</li></a>
           <a href="#">
-            <li class="login"><span>Login</span></li></a
-          >
+            <li class="login">
+              <span>Login</span>
+            </li>
+            </a>
         </ul>
+
         <a href="#" class="menu-show">
           <li><span>X</span></li></a
         >
       </div>
+      
     </div>
+    <!-- <svg class="bottom-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#6C8AD7" fill-opacity="1" d="M0,64L60,96C120,128,240,192,360,186.7C480,181,600,107,720,69.3C840,32,960,32,1080,64C1200,96,1320,160,1380,192L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg> -->
   </div>
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#6C8AD7" fill-opacity="1" d="M0,192L60,197.3C120,203,240,213,360,192C480,171,600,117,720,106.7C840,96,960,128,1080,154.7C1200,181,1320,203,1380,213.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg> -->
+
 </template>
 
 <script>
@@ -109,6 +113,11 @@ a > span {
   color: white;
 }
 
+.bottom-svg{
+  position:relative;
+  bottom:-340px;
+}
+
 @media (max-width: 1100px) {
   .login {
     width: 100px;
@@ -118,7 +127,7 @@ a > span {
   }
 }
 
-@media (max-width: 885px) {
+@media (max-width: 800px) {
   ul {
     display: none;
   }

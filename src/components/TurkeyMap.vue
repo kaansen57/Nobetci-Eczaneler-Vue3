@@ -1,6 +1,9 @@
 <template>
-  <div class="svg-turkiye-haritasi text-center">
-    <svg
+  <div class="svg-turkiye-haritasi text-center" >
+     <div class="tooltiptext" :style="{top:toolTipClass.top+'px',left:toolTipClass.left+'px'}">
+          {{cityText}}
+        </div>
+    <svg  
       version="1.1"
       id="svg-turkiye-haritasi"
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +12,7 @@
       viewBox="0 0 1007.478 527.323"
       xml:space="preserve"
     >
-      <g id="turkiye" @click="clickedDistrict" :onmouseover="clickedDistrict">
+      <g id="turkiye" @click="clickedDistrict" @mouseover="clickedDistrict">
         <g
           id="adana"
           data-plakakodu="01"
@@ -841,16 +844,28 @@
 </template>
 
 <script >
-import { computed } from "vue";
+import { ref, reactive,computed, onUpdated } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
 export default {
   setup() {
     const store = useStore();
+    const city = ref("");
+    const cityText = ref("");
+    const toolTipClass = reactive({
+      top : "",
+      left:""
+    })
 
+ 
     const clickedDistrict = (event) => {
-      const city = event.path[1].id;
-      const cityText = event.path[1].attributes[3].value;
+     
+      city.value = event.path[1].id;
+      cityText.value = event.path[1].attributes[3].value;
+      
+      const element = document.querySelector(`g#${city.value}`);
+     
+
       store.commit("setCityText", cityText);
       if (event.type === "click") {
         store.commit("setSelectedCityOnClick",cityText);
@@ -873,13 +888,16 @@ export default {
     };
     return {
       clickedDistrict,
+      city,
+      cityText,
+      toolTipClass
     };
   },  
 };
 </script>
 <style scoped >
 svg {
-  width: 60%;
+  width: 90%;
 }
 path {
   fill: #FAFBFD;
@@ -889,7 +907,26 @@ path {
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
-  fill: rgb(172, 2, 2);
+  fill: #5DA3E1;
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  height:30px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 10px 10px 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+ .tooltiptext {
+  visibility: visible;
 }
 @media only screen and (max-width: 900px) {
   svg {
