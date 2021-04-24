@@ -1,9 +1,13 @@
 <template>
-  <div class="svg-turkiye-haritasi text-center" >
-     <div class="tooltiptext" :style="{top:toolTipClass.top+'px',left:toolTipClass.left+'px'}">
-          {{cityText}}
-        </div>
-    <svg  
+  <div class="svg-turkiye-haritasi text-center">
+    <div
+      class="tooltiptext"
+      :style="toolTipClass"
+    >
+      {{ cityText }}
+    </div>
+
+    <svg
       version="1.1"
       id="svg-turkiye-haritasi"
       xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +16,7 @@
       viewBox="0 0 1007.478 527.323"
       xml:space="preserve"
     >
+    
       <g id="turkiye" @click="clickedDistrict" @mouseover="clickedDistrict">
         <g
           id="adana"
@@ -844,7 +849,7 @@
 </template>
 
 <script >
-import { ref, reactive,computed, onUpdated } from "vue";
+import { ref, reactive, computed, onUpdated } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
 export default {
@@ -853,33 +858,34 @@ export default {
     const city = ref("");
     const cityText = ref("");
     const toolTipClass = reactive({
-      top : "",
-      left:""
-    })
+      left: "",
+      top: "",
+      visibility : ""
+    });
 
- 
     const clickedDistrict = (event) => {
-     
       city.value = event.path[1].id;
       cityText.value = event.path[1].attributes[3].value;
-      
-      const element = document.querySelector(`g#${city.value}`);
-     
 
+      const element = document.querySelector(`g#${city.value}`);
+      toolTipClass.left = element.getBoundingClientRect().x + 10 + 'px';
+      toolTipClass.top =  element.getBoundingClientRect().top  - 120 + 'px';
+      toolTipClass.visibility = "visible"
+   
       store.commit("setCityText", cityText);
       if (event.type === "click") {
-        store.commit("setSelectedCityOnClick",cityText);
+        store.commit("setSelectedCityOnClick", cityText);
         store.dispatch("cityChange", city);
         const config = {
           method: "GET",
           url: `${process.env.VUE_APP_API_URL + city}`,
           headers: {
-            Authorization: process.env.VUE_APP_API_KEY
+            Authorization: process.env.VUE_APP_API_KEY,
           },
         };
         axios(config)
           .then((res) => {
-             store.commit("setData", res.data.data);
+            store.commit("setData", res.data.data);
           })
           .catch((err) => {
             console.error(err);
@@ -890,9 +896,9 @@ export default {
       clickedDistrict,
       city,
       cityText,
-      toolTipClass
+      toolTipClass,
     };
-  },  
+  },
 };
 </script>
 <style scoped >
@@ -900,34 +906,34 @@ svg {
   width: 90%;
 }
 path {
-  fill: #FAFBFD;
-  stroke:  #b8b6b6;
+  fill: #fafbfd;
+  stroke: #b8b6b6;
   pointer-events: all;
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
-  fill: #5DA3E1;
+  fill: #5da3e1;
 }
 .tooltiptext {
   visibility: hidden;
   width: 140px;
-  height:30px;
+  height: 30px;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   background-color: #444;
   color: #fff;
   text-align: center;
   padding: 5px 0;
-  border-radius: 10px 10px 10px 0;
+  border-radius: 10px;
   position: relative;
   z-index: 1;
+  font-weight:bold;
 }
 
- .tooltiptext {
-  visibility: visible;
-}
+
+
 @media only screen and (max-width: 900px) {
   svg {
     width: 100%;
