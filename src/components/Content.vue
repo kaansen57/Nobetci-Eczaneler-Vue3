@@ -1,7 +1,7 @@
 <template>
   <div class="content-wrapper">
     <Header></Header>
-    <h1 class="mb-5 text-center">{{ city }} Nöbetçi Eczaneler</h1>
+    <h1 class="mb-5 text-center" v-if="city"> <b>{{ city }}</b> Nöbetçi Eczaneler</h1>
     <TurkeyMap></TurkeyMap>
     <Result></Result>
   </div>

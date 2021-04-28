@@ -1,9 +1,6 @@
 <template>
   <div class="svg-turkiye-haritasi text-center">
-    <div
-      class="tooltiptext"
-      :style="toolTipClass"
-    >
+    <div class="tooltiptext" :style="toolTipClass">
       {{ cityText }}
     </div>
 
@@ -16,8 +13,7 @@
       viewBox="0 0 1007.478 527.323"
       xml:space="preserve"
     >
-    
-      <g id="turkiye" @click="clickedDistrict" @mouseover="clickedDistrict">
+      <g id="turkiye" @click="clickedDistrict" @mouseover="clickedDistrict" @mouseleave="toolTipMouseOut">
         <g
           id="adana"
           data-plakakodu="01"
@@ -849,6 +845,7 @@
 </template>
 
 <script >
+import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import { ref, reactive, computed, onUpdated } from "vue";
 import { useStore } from "vuex";
 import axios from "axios";
@@ -860,18 +857,24 @@ export default {
     const toolTipClass = reactive({
       left: "",
       top: "",
-      visibility : ""
+      visibility: "",
     });
 
+    const toolTipMouseOver = (city) => {
+      const element = document.querySelector(`g#${city.value}`);
+      toolTipClass.left = `${event.pageX}px`;
+      toolTipClass.top = ` ${event.pageY}px`;
+      toolTipClass.visibility = "visible";
+    };
+    
+    const toolTipMouseOut = () =>{
+       toolTipClass.visibility = "hidden";
+    }
     const clickedDistrict = (event) => {
       city.value = event.path[1].id;
       cityText.value = event.path[1].attributes[3].value;
+      toolTipMouseOver(city);
 
-      const element = document.querySelector(`g#${city.value}`);
-      toolTipClass.left = element.getBoundingClientRect().x + 10 + 'px';
-      toolTipClass.top =  element.getBoundingClientRect().top  - 120 + 'px';
-      toolTipClass.visibility = "visible"
-   
       store.commit("setCityText", cityText);
       if (event.type === "click") {
         store.commit("setSelectedCityOnClick", cityText);
@@ -894,6 +897,7 @@ export default {
     };
     return {
       clickedDistrict,
+      toolTipMouseOut,
       city,
       cityText,
       toolTipClass,
@@ -927,12 +931,10 @@ path:hover {
   text-align: center;
   padding: 5px 0;
   border-radius: 10px;
-  position: relative;
+  position: absolute;
   z-index: 1;
-  font-weight:bold;
+  font-weight: bold;
 }
-
-
 
 @media only screen and (max-width: 900px) {
   svg {
