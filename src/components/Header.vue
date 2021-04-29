@@ -1,27 +1,27 @@
 <template>
-    <header class="nav-menu">
-      <div class="logo">
-        <a href="">
-          <img src="@/assets/logo.png" width="180" alt="Nöbetçi Eczane" />
+  <header class="nav-menu">
+    <div class="logo">
+      <a href="">
+        <img src="@/assets/logo.png" width="180" alt="Nöbetçi Eczane" />
+      </a>
+    </div>
+    <div class="menu-items">
+      <ul>
+        <a href="#"> <li class="active">Homepage</li></a>
+        <a href="#"> <li class="">All Pharmacy</li></a>
+        <a href="#"> <li class="">Contact</li></a>
+        <a href="#">
+          <li class="login">
+            <span>Login</span>
+          </li>
         </a>
-      </div>
-      <div class="menu-items">
-        <ul>
-          <a href="#"> <li class="active">Homepage</li></a>
-          <a href="#"> <li class="">All Pharmacy</li></a>
-          <a href="#"> <li class="">Contact</li></a>
-          <a href="#">
-            <li class="login">
-              <span>Login</span>
-            </li>
-            </a>
-        </ul>
-        <a href="#" class="menu-show">
-          <li><span>X</span></li></a
-        >
-      </div>
-    </header>
-    <div class="header-wave"></div>
+      </ul>
+      <a href="#" class="menu-show">
+        <li><span>X</span></li></a
+      >
+    </div>
+  </header>
+  <div class="header-wave"></div>
 </template>
 
 <script>
@@ -41,18 +41,17 @@ export default {
 <style>
 .nav-menu {
   display: flex;
-  height:450px;
+  height: 450px;
   padding-top: 40px;
   background-color: #74ebd5;
   background-image: linear-gradient(to bottom left, #48c6ef 0%, #6f86d6 100%);
 }
-.header-wave{
-  display:block;
-  height:250px;
-  background: url('../assets/wave.png');
-  background-size:cover;
-  background-repeat:no-repeat;
-
+.header-wave {
+  display: block;
+  height: 250px;
+  background: url("../assets/wave.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .logo {
   padding-left: 20px;
@@ -99,8 +98,12 @@ ul li:hover {
 }
 .login:hover {
   transition: all 0.4s ease;
-  background-color: #fff;
-  color: #313131;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 a {
   font-size: 16px;
@@ -116,11 +119,10 @@ a > span {
   color: white;
 }
 
-.bottom-svg{
-  position:relative;
-  bottom:-340px;
+.bottom-svg {
+  position: relative;
+  bottom: -340px;
 }
-
 
 @media (max-width: 1100px) {
   .login {

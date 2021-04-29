@@ -4,6 +4,7 @@
     <h1 class="mb-5 text-center" v-if="city"> <b>{{ city }}</b> Nöbetçi Eczaneler</h1>
     <TurkeyMap></TurkeyMap>
     <Result></Result>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -13,11 +14,13 @@ import { useStore } from "vuex";
 import TurkeyMap from "./TurkeyMap";
 import Header from "./Header";
 import Result from "./Result";
+import Footer from "./Footer";
 export default {
   components: {
     TurkeyMap,
     Header,
     Result,
+    Footer,
   },
   setup() {
     const store = useStore();

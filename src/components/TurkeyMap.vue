@@ -1,7 +1,7 @@
 <template>
   <div class="svg-turkiye-haritasi text-center">
     <div class="tooltiptext" :style="toolTipClass">
-      {{ cityText }}
+     <img src="@/assets/map-pin.svg" width="15" >{{ cityText }}
     </div>
 
     <svg
@@ -939,20 +939,27 @@ path:hover {
 .tooltiptext {
   visibility: hidden;
   width: 140px;
-  height: 30px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #444;
-  color: #fff;
+  background-color: #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #313131;
+  font-weight: bold;
+  font-size:18px;
   text-align: center;
   padding: 5px 0;
-  border-radius: 10px;
+  border-radius: 5px;
   position: absolute;
   z-index: 1;
-  font-weight: bold;
+ 
 }
 
+.tooltiptext > img{
+    margin-right:5px;
+}
 @media only screen and (max-width: 900px) {
   svg {
     width: 100%;
