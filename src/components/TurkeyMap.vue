@@ -13,7 +13,12 @@
       viewBox="0 0 1007.478 527.323"
       xml:space="preserve"
     >
-      <g id="turkiye" @click="clickedDistrict" @mouseover="clickedDistrict" @mouseleave="toolTipMouseOut">
+      <g
+        id="turkiye"
+        @click="clickedDistrict"
+        @mouseover="clickedDistrict"
+        @mouseleave="toolTipMouseOut"
+      >
         <g
           id="adana"
           data-plakakodu="01"
@@ -854,11 +859,35 @@ export default {
     const store = useStore();
     const city = ref("");
     const cityText = ref("");
+    const cityTextClick = ref("");
     const toolTipClass = reactive({
       left: "",
       top: "",
       visibility: "",
     });
+
+    const config = (city) => {
+      const config = {
+        method: "GET",
+        url: `${process.env.VUE_APP_API_URL + city.value}`,
+        headers: {
+          Authorization: process.env.VUE_APP_API_KEY,
+        },
+      };
+      return config;
+    };
+
+    const getPharmacy = (cityTextClick, city) => {
+      store.commit("setSelectedCityOnClick", cityTextClick);
+      store.commit("setSelectedCity", city);
+      axios(config(city))
+        .then((res) => {
+          store.commit("setData", res.data.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
 
     const toolTipMouseOver = (city) => {
       const element = document.querySelector(`g#${city.value}`);
@@ -866,35 +895,23 @@ export default {
       toolTipClass.top = ` ${event.pageY}px`;
       toolTipClass.visibility = "visible";
     };
-    
-    const toolTipMouseOut = () =>{
-       toolTipClass.visibility = "hidden";
-    }
+
+    const toolTipMouseOut = () => {
+      toolTipClass.visibility = "hidden";
+    };
+
     const clickedDistrict = (event) => {
       city.value = event.path[1].id;
       cityText.value = event.path[1].attributes[3].value;
+      store.commit("setCityText", cityText);
       toolTipMouseOver(city);
 
-      store.commit("setCityText", cityText);
       if (event.type === "click") {
-        store.commit("setSelectedCityOnClick", cityText);
-        store.dispatch("cityChange", city);
-        const config = {
-          method: "GET",
-          url: `${process.env.VUE_APP_API_URL + city}`,
-          headers: {
-            Authorization: process.env.VUE_APP_API_KEY,
-          },
-        };
-        axios(config)
-          .then((res) => {
-            store.commit("setData", res.data.data);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+        cityTextClick.value = event.path[1].attributes[3].value;
+        getPharmacy(cityTextClick, city);
       }
     };
+
     return {
       clickedDistrict,
       toolTipMouseOut,

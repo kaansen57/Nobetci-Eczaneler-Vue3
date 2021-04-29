@@ -22,7 +22,7 @@ export default {
   setup() {
     const store = useStore();
     const cityCount = ref(0);
-    const selectedCity = computed(()=> store.state.selectedCityOnClick);
+    const selectedCity = computed(()=> store.getters.getSelectedCityOnClick);
     const dutyPharmacy = computed(() => {
       return store.getters.getData
     });

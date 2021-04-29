@@ -15,6 +15,9 @@ export default createStore({
     getSelectedCityOverChange(state){
       return state.selectedCityOverChange;
     },
+    getSelectedCityOnClick(state){
+      return state.selectedCityOnClick;
+    },
     getData(state){
       return state.data;
     }
@@ -34,11 +37,7 @@ export default createStore({
       state.data.push(payload);
     },
   },
-  actions: {
-    cityChange(context,payload){
-       context.commit('setSelectedCity',payload);
-    }
-  },
+
   modules: {
   }
 })

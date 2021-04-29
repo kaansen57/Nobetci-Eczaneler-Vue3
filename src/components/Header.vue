@@ -1,10 +1,10 @@
 <template>
-  <div class="row">
-    <div class="nav-menu">
+    <header class="nav-menu">
       <div class="logo">
-        <img src="@/assets/logo.png" width="70" alt="Nöbetçi Eczane" />
+        <a href="">
+          <img src="@/assets/logo.png" width="180" alt="Nöbetçi Eczane" />
+        </a>
       </div>
-
       <div class="menu-items">
         <ul>
           <a href="#"> <li class="active">Homepage</li></a>
@@ -16,16 +16,12 @@
             </li>
             </a>
         </ul>
-
         <a href="#" class="menu-show">
           <li><span>X</span></li></a
         >
       </div>
-      
-    </div>
-    <!-- <svg class="bottom-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#6C8AD7" fill-opacity="1" d="M0,64L60,96C120,128,240,192,360,186.7C480,181,600,107,720,69.3C840,32,960,32,1080,64C1200,96,1320,160,1380,192L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg> -->
-  </div>
-
+    </header>
+    <div class="header-wave"></div>
 </template>
 
 <script>
@@ -45,6 +41,18 @@ export default {
 <style>
 .nav-menu {
   display: flex;
+  height:450px;
+  padding-top: 40px;
+  background-color: #74ebd5;
+  background-image: linear-gradient(to bottom left, #48c6ef 0%, #6f86d6 100%);
+}
+.header-wave{
+  display:block;
+  height:250px;
+  background: url('../assets/wave.png');
+  background-size:cover;
+  background-repeat:no-repeat;
+
 }
 .logo {
   padding-left: 20px;
@@ -53,12 +61,7 @@ export default {
 .menu-items {
   width: 90%;
 }
-.row {
-  padding-top: 40px;
-  height: 600px;
-  background-color: #74ebd5;
-  background-image: linear-gradient(to bottom left, #48c6ef 0%, #6f86d6 100%);
-}
+
 .menu-show {
   display: none;
   padding-right: 20px;
@@ -117,6 +120,7 @@ a > span {
   position:relative;
   bottom:-340px;
 }
+
 
 @media (max-width: 1100px) {
   .login {
