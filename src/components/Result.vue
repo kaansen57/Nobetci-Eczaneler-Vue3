@@ -1,6 +1,7 @@
 <template>
-  <div class="row">
+  <div class="result">
     <div class="col-md-12 text-center">
+     
       <h1 v-if="cityCount > 0"> {{selectedCity}} için Toplam Sonuç {{ cityCount  }}</h1>
       <ul>
         <li v-for="(pharmacys, i) in dutyPharmacy[0]" :key="i">
@@ -11,7 +12,6 @@
           {{ pharmacys.Telefon }}
         </li>
       </ul>
-    
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     const cityCount = ref(0);
     const selectedCity = computed(()=> store.getters.getSelectedCityOnClick);
     const dutyPharmacy = computed(() => {
-      return store.getters.getData
+       return store.getters.getData
     });
 
     onUpdated(() => {

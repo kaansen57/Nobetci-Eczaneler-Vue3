@@ -1,8 +1,9 @@
 <template>
   <div class="svg-turkiye-haritasi text-center">
     <div class="tooltiptext" :style="toolTipClass">
-     <img src="@/assets/map-pin.svg" width="15" > {{ cityText }}
+      <img src="@/assets/map-pin.svg" width="15" /> {{ cityText }}
     </div>
+
     <svg
       version="1.1"
       id="svg-turkiye-haritasi"
@@ -845,6 +846,7 @@
         </g>
       </g>
     </svg>
+    <img src="@/assets/loading.gif" width="150" v-if="loading" />
   </div>
 </template>
 
@@ -859,6 +861,7 @@ export default {
     const city = ref("");
     const cityText = ref("");
     const cityTextClick = ref("");
+    const loading = ref(false);
     const toolTipClass = reactive({
       left: "",
       top: "",
@@ -881,7 +884,8 @@ export default {
       store.commit("setSelectedCity", city);
       axios(config(city))
         .then((res) => {
-          store.commit("setData", res.data.data);
+          store.dispatch('setDataAction',res.data.data);
+          // store.commit("setData", res.data.data);
         })
         .catch((err) => {
           console.error(err);
@@ -891,7 +895,7 @@ export default {
     const toolTipMouseOver = (city) => {
       const element = document.querySelector(`g#${city.value}`);
       toolTipClass.left = `${event.pageX}px`;
-      toolTipClass.top = ` ${event.pageY}px`;
+      toolTipClass.top = ` ${event.pageY - 90}px`;
       toolTipClass.visibility = "visible";
     };
 
@@ -906,6 +910,7 @@ export default {
       toolTipMouseOver(city);
 
       if (event.type === "click") {
+        loading.value = true;
         cityTextClick.value = event.path[1].attributes[3].value;
         getPharmacy(cityTextClick, city);
       }
@@ -917,10 +922,12 @@ export default {
       city,
       cityText,
       toolTipClass,
+      loading,
     };
   },
 };
 </script>
+
 <style scoped >
 svg {
   width: 90%;
@@ -933,32 +940,32 @@ path {
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
-  fill: #5da3e1;
+  fill: #6d8ad8;
 }
 .tooltiptext {
   visibility: hidden;
-  width: 140px;
-  height: 50px;
+  width: 170px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
+  box-shadow: 0 8px 32px 0 rgba(7, 7, 7, 0.63);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #313131;
   font-weight: bold;
-  font-size:18px;
+  font-size: 18px;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 5px;
   border-radius: 5px;
   position: absolute;
   z-index: 1;
- 
 }
 
-.tooltiptext > img{
-    margin-right:5px;
+.tooltiptext > img {
+  margin-right: 5px;
 }
+
 @media only screen and (max-width: 900px) {
   svg {
     width: 100%;

@@ -7,12 +7,12 @@
     </div>
     <div class="menu-items">
       <ul>
-        <a href="#"> <li class="active">Homepage</li></a>
-        <a href="#"> <li class="">All Pharmacy</li></a>
-        <a href="#"> <li class="">Contact</li></a>
+        <a href="#"> <li class="active">Ana Sayfa</li></a>
+        <a href="#"> <li class="">Tüm Eczaneler</li></a>
+        <a href="#"> <li class="">İletişim</li></a>
         <a href="#">
           <li class="login">
-            <span>Login</span>
+            <span>Giriş Yap</span>
           </li>
         </a>
       </ul>
@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .nav-menu {
   display: flex;
   height: 450px;

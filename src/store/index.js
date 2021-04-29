@@ -6,7 +6,8 @@ export default createStore({
     selectedCity : "",
     selectedCityOnClick : "",
     selectedCityOverChange : "",
-    data : []
+    data : [],
+    loading: false
   },
   getters:{
     getSelectedCity(state){
@@ -20,6 +21,9 @@ export default createStore({
     },
     getData(state){
       return state.data;
+    },
+    getLoading(state){
+      return state.loading;
     }
   },
   mutations: {
@@ -30,14 +34,23 @@ export default createStore({
       state.selectedCityOverChange = payload;
     },
     setSelectedCityOnClick(state,payload){
+      
       state.selectedCityOnClick = payload;
     },
     setData(state,payload){
       state.data = [];
       state.data.push(payload);
     },
+    setLoading(state,payload){
+      state.loading = payload;
+    }
   },
-
+  actions:{
+    setDataAction(context,payload){
+      context.commit('setData',payload)
+      context.commit('setLoading',false);
+    }
+  },
   modules: {
   }
 })
