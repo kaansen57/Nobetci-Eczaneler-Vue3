@@ -1,9 +1,8 @@
 <template>
   <div class="svg-turkiye-haritasi text-center">
     <div class="tooltiptext" :style="toolTipClass">
-     <img src="@/assets/map-pin.svg" width="15" >{{ cityText }}
+     <img src="@/assets/map-pin.svg" width="15" > {{ cityText }}
     </div>
-
     <svg
       version="1.1"
       id="svg-turkiye-haritasi"
