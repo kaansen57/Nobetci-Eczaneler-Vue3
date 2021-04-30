@@ -846,7 +846,7 @@
         </g>
       </g>
     </svg>
-    <img src="@/assets/loading.gif" width="150" v-if="loading" />
+    <img class="mt-5" src="@/assets/loading.gif" width="150" v-if="loading" />
   </div>
 </template>
 
@@ -861,7 +861,7 @@ export default {
     const city = ref("");
     const cityText = ref("");
     const cityTextClick = ref("");
-    const loading = ref(false);
+    const loading = computed(()=> store.getters.getLoading);
     const toolTipClass = reactive({
       left: "",
       top: "",
@@ -885,7 +885,7 @@ export default {
       axios(config(city))
         .then((res) => {
           store.dispatch('setDataAction',res.data.data);
-          // store.commit("setData", res.data.data);
+          console.log(loading.value);
         })
         .catch((err) => {
           console.error(err);
@@ -910,7 +910,7 @@ export default {
       toolTipMouseOver(city);
 
       if (event.type === "click") {
-        loading.value = true;
+        store.commit('setLoading',true);
         cityTextClick.value = event.path[1].attributes[3].value;
         getPharmacy(cityTextClick, city);
       }

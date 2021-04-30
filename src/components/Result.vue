@@ -1,8 +1,7 @@
 <template>
-  <div class="result">
-    <div class="col-md-12 text-center">
-     
-      <h1 v-if="cityCount > 0"> {{selectedCity}} için Toplam Sonuç {{ cityCount  }}</h1>
+  <div class="result mt-5">
+    <div class="col-md-12 text-center" v-if="!loading">
+      <h1 v-if="cityCount"> <b>{{selectedCity}}</b> için Toplam Sonuç : {{cityCount.length}} </h1>
       <ul>
         <li v-for="(pharmacys, i) in dutyPharmacy[0]" :key="i">
           {{ pharmacys.EczaneAdi }}
@@ -22,19 +21,21 @@ export default {
   setup() {
     const store = useStore();
     const cityCount = ref(0);
+    const loading = computed(() => store.getters.getLoading);
     const selectedCity = computed(()=> store.getters.getSelectedCityOnClick);
     const dutyPharmacy = computed(() => {
        return store.getters.getData
     });
 
     onUpdated(() => {
-      cityCount.value = dutyPharmacy.value[0].length
+      cityCount.value = dutyPharmacy.value[0]
     })
 
     return {
       dutyPharmacy,
       cityCount,
-      selectedCity
+      selectedCity,
+      loading
     };
   },
 };

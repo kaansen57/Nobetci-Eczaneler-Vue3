@@ -34,7 +34,6 @@ export default createStore({
       state.selectedCityOverChange = payload;
     },
     setSelectedCityOnClick(state,payload){
-      
       state.selectedCityOnClick = payload;
     },
     setData(state,payload){
@@ -47,7 +46,7 @@ export default createStore({
   },
   actions:{
     setDataAction(context,payload){
-      context.commit('setData',payload)
+      context.commit('setData',payload);
       context.commit('setLoading',false);
     }
   },
