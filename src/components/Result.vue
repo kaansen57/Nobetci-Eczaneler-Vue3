@@ -1,7 +1,7 @@
 <template>
-  <section class="result">
+  <section class="result" v-if="!loading">
     <div class="row mt-5">
-      <div class="col-md-12 text-center" v-if="!loading">
+      <div class="col-md-12 text-center">
         <h1 v-if="cityCount">
           <b>{{ selectedCity }}</b> için Toplam Sonuç : {{ cityCount.length }}
         </h1>
@@ -21,17 +21,20 @@
         href="#"
         v-for="(pharmacys, i) in dutyPharmacy[0]"
         :key="i"
-        class="pharmacy-wrapper d-flex align-items-center col-md-4 p-4 mt-3 mb-3"
+        class="pharmacy-wrapper d-flex justify-content-center align-items-center col-lg-4 col-sm-6 p-4 mt-3 mb-3"
       >
         <div class="col-md-6 d-flex justify-content-start align-items-center">
-          <span class="pharmacy-letter">
+          <span class="pharmacy-letter pharmacy-city">
             {{ pharmacys.EczaneAdi.slice(0, 1) }}
           </span>
           {{ pharmacys.EczaneAdi }}
         </div>
         <div class="vl"></div>
         <div class="col-md-6 d-flex justify-content-center">
-         <img src="@/assets/map-pin.svg" width="20" style="margin-right:10px;" > {{ pharmacys.ilce }}
+          <div class="pharmacy-letter">
+            <img src="@/assets/map-pin-white.svg" style="margin-right: 10px" />
+            {{ pharmacys.ilce }}
+          </div>
         </div>
       </a>
     </div>
@@ -89,18 +92,18 @@ a {
   top: -10px;
 }
 .pharmacy-letter {
-  width: 30px;
-  height: 30px;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #5ba9e459;
+  background: #6355f934;
   border-radius: 50px;
   margin-right: 1rem;
   font-weight: bold;
-  color: #777;
+  color: #293e4e91;
   transition: all 0.5s ease;
-  padding:20px;
+  padding: 5px 15px;
 }
 
 .pharmacy-wrapper:hover .pharmacy-letter {
@@ -108,10 +111,31 @@ a {
   background-color: #6f86d6;
   color: #fff;
 }
-.vl{
-border-right:#e4e1e1 1px solid;
-height:3rem;
-margin-left:15px;
-margin-right:5px;
+.pharmacy-city {
+  background: #f9555534 !important;
+}
+.pharmacy-wrapper:hover .pharmacy-city {
+  transition: all 0.5s ease;
+  background-color: #d66f6f !important;
+  color: #fff;
+}
+.vl {
+  border-right: #e4e1e1 1px solid;
+  height: 3rem;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+img {
+  width: 15px;
+}
+
+@media screen and (max-width: 1100px) {
+  a {
+    font-size: 15px;
+  }
+  img {
+    width: 10px;
+  }
 }
 </style>
