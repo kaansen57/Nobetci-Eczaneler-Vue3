@@ -934,13 +934,14 @@ svg {
 }
 path {
   fill: #fafbfd;
-  stroke: #b8b6b6;
+  stroke: #c9c9c9;
   pointer-events: all;
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
   fill: #6d8ad8;
+  stroke: #6d8ad8;
 }
 .tooltiptext {
   visibility: hidden;

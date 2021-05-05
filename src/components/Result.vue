@@ -16,12 +16,12 @@
       </ul> -->
       </div>
     </div>
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-center">
       <a
         href="#"
         v-for="(pharmacys, i) in dutyPharmacy[0]"
         :key="i"
-        class="pharmacy-wrapper d-flex justify-content-center align-items-center col-lg-4 col-sm-6 p-4 mt-3 mb-3"
+        class="pharmacy-wrapper d-flex justify-content-center align-items-center pharmacy-col p-4 mt-3 mb-3"
       >
         <div class="col-md-6 d-flex justify-content-start align-items-center">
           <span class="pharmacy-letter pharmacy-city">
@@ -50,6 +50,7 @@ export default {
     const loading = computed(() => store.getters.getLoading);
     const selectedCity = computed(() => store.getters.getSelectedCityOnClick);
     const dutyPharmacy = computed(() => {
+      console.log(store.getters.getData);
       return store.getters.getData;
     });
 
@@ -70,22 +71,25 @@ export default {
 <style scoped>
 .row {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
-.col-md-4 {
-  width: 30% !important;
-  border-radius: 5px;
-}
+
 a {
   color: #555;
   text-decoration: none;
   font-size: 18px;
 }
+.pharmacy-col{
+  width:31% !important;
+}
 .pharmacy-wrapper {
+
+  border-radius: 10px;
+  border:1px solid rgb(228, 227, 227);
   position: relative;
   top: 0;
   transition: top 0.5s ease;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.096);
+  box-shadow: 0 8px 16px -5px rgba(37, 39, 71, 0.205);
 }
 .pharmacy-wrapper:hover {
   transition: top 0.5s ease;
