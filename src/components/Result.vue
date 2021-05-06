@@ -16,22 +16,22 @@
       </ul> -->
       </div>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-around">
       <a
         href="#"
         v-for="(pharmacys, i) in dutyPharmacy[0]"
         :key="i"
-        class="pharmacy-wrapper d-flex justify-content-center align-items-center pharmacy-col p-4 mt-3 mb-3"
+        class="pharmacy-wrapper d-flex justify-content-around align-items-center col-sm-12 col-lg-4 p-4 mt-3 mb-3"
       >
         <div class="col-md-6 d-flex justify-content-start align-items-center">
-          <span class="pharmacy-letter pharmacy-city">
+          <span class="pharmacy-letter ">
             {{ pharmacys.EczaneAdi.slice(0, 1) }}
           </span>
           {{ pharmacys.EczaneAdi }}
         </div>
         <div class="vl"></div>
         <div class="col-md-6 d-flex justify-content-center">
-          <div class="pharmacy-letter">
+          <div class="pharmacy-letter pharmacy-city text-center">
             <img src="@/assets/map-pin-white.svg" style="margin-right: 10px" />
             {{ pharmacys.ilce }}
           </div>
@@ -79,11 +79,10 @@ a {
   text-decoration: none;
   font-size: 18px;
 }
-.pharmacy-col{
-  width:31% !important;
+.col-lg-4{
+  width:430px;
 }
 .pharmacy-wrapper {
-
   border-radius: 10px;
   border:1px solid rgb(228, 227, 227);
   position: relative;
@@ -101,7 +100,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #6355f934;
+  background: #f9555534 !important;
+  
   border-radius: 50px;
   margin-right: 1rem;
   font-weight: bold;
@@ -112,22 +112,22 @@ a {
 
 .pharmacy-wrapper:hover .pharmacy-letter {
   transition: all 0.5s ease;
-  background-color: #6f86d6;
+ background-color: #d66f6f !important;
   color: #fff;
 }
 .pharmacy-city {
-  background: #f9555534 !important;
+  background: #6355f934 !important;
 }
 .pharmacy-wrapper:hover .pharmacy-city {
   transition: all 0.5s ease;
-  background-color: #d66f6f !important;
+  background-color: #6f86d6 !important;
   color: #fff;
 }
 .vl {
   border-right: #e4e1e1 1px solid;
-  height: 3rem;
-  margin-left: 15px;
-  margin-right: 5px;
+  height: 4rem;
+  margin-left: .5rem;
+  margin-right: .5rem ;
 }
 
 img {
@@ -135,6 +135,9 @@ img {
 }
 
 @media screen and (max-width: 1100px) {
+  .pharmach-col{
+    width:50% ;
+  }
   a {
     font-size: 15px;
   }

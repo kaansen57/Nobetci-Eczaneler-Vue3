@@ -22,6 +22,7 @@ export default {
     src:local("Sofia Pro"),
         url("./fonts/Sofia/Sofia Pro Light Az.otf") format("truetype");
 }
+
 *{
   font-family: 'Sofia Pro', sans-serif;
   box-sizing: border-box;
