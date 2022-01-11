@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-wave"></div>
+  <div class="footer-wave" id="contact"></div>
   <footer>
     <div class="mb-5">
       <div class="col-md-12 text-center">
@@ -20,16 +20,13 @@
       <div class="col-md-12">
         <ul>
           <a href="#">
-            <li>Hakkımızda</li>
+            <li>Ana Sayfa</li>
           </a>
-          <a href="#">
+          <a href="#eczaneler">
+            <li>Tüm Eczaneler</li>
+          </a>
+          <a href="#contact">
             <li>İletişim</li>
-          </a>
-          <a href="#">
-            <li>Gizlilik Politikası</li>
-          </a>
-          <a href="#">
-            <li>Kullanım Sözleşmesi</li>
           </a>
         </ul>
       </div>
@@ -110,13 +107,18 @@ ul li:hover {
 }
 
 @media screen and (max-width: 768px) {
-  
-  h1{
-    font-size:24px;
+  h1 {
+    font-size: 24px;
   }
-  ul li , p ,h5  {
+  ul li,
+  p,
+  h5 {
     font-size: 14px;
-    
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

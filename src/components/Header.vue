@@ -7,18 +7,11 @@
     </div>
     <div class="menu-items">
       <ul>
-        <a href="#"> <li class="active">Ana Sayfa</li></a>
-        <a href="#"> <li class="">Tüm Eczaneler</li></a>
-        <a href="#"> <li class="">İletişim</li></a>
-        <a href="#">
-          <li class="login">
-            <span>Giriş Yap</span>
-          </li>
-        </a>
+        <a href="/"> <li class="active">Ana Sayfa</li></a>
+        <a href="#eczaneler"> <li class="">Tüm Eczaneler</li></a>
+        <a href="#contact"> <li class="">İletişim</li></a>
       </ul>
-      <a href="#" class="menu-show">
-        <li><span>X</span></li></a
-      >
+      <!-- <a href="#" class="menu-show"> <i class="fas fa-ellipsis-h"></i></a> -->
     </div>
   </header>
   <div class="header-wave"></div>
@@ -42,7 +35,7 @@ export default {
 .nav-menu {
   display: flex;
   height: 450px;
-  padding-top: 40px;
+  padding:3rem 1rem 0 1rem;
   background-color: #74ebd5;
   background-image: linear-gradient(to bottom left, #48c6ef 0%, #6f86d6 100%);
 }
@@ -54,16 +47,10 @@ export default {
   background-repeat: no-repeat;
 }
 .logo {
-  padding-left: 20px;
-  width: 10%;
+  width: 100%;
 }
-.menu-items {
-  width: 90%;
-}
-
-.menu-show {
-  display: none;
-  padding-right: 20px;
+.menu-items{
+  width:100%;
 }
 ul {
   list-style-type: none;
@@ -75,6 +62,7 @@ ul a {
 }
 ul a li {
   display: block;
+  text-align: center;
   padding: 10px 20px;
   border-radius: 50px;
   transition: background-color 0.2s ease;
@@ -124,22 +112,30 @@ a > span {
   bottom: -340px;
 }
 
-@media (max-width: 1100px) {
-  .login {
-    width: 100px;
+@media (max-width: 768px) {
+  ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul a li {
+    width: max-content;
+    padding: 5px 10px;
   }
   a {
-    font-size: 14px;
+    font-size: 1rem;
   }
-}
-
-@media (max-width: 800px) {
-  ul {
-    display: none;
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
-  .menu-show {
-    display: block;
-    float: right;
+  .nav-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

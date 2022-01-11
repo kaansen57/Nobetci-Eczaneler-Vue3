@@ -3,53 +3,67 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     //Api request variable
-    selectedCity : "",
-    selectedCityOnClick : "",
-    selectedCityOverChange : "",
-    data : [],
-    loading: false
+    selectedCity: "",
+    selectedCityOnClick: "",
+    selectedCityOverChange: "",
+    data: [],
+    popupData: [],
+    popupShow: false,
+    loading: false,
   },
-  getters:{
-    getSelectedCity(state){
+  getters: {
+    getSelectedCity(state) {
       return state.selectedCity;
     },
-    getSelectedCityOverChange(state){
+    getSelectedCityOverChange(state) {
       return state.selectedCityOverChange;
     },
-    getSelectedCityOnClick(state){
+    getSelectedCityOnClick(state) {
       return state.selectedCityOnClick;
     },
-    getData(state){
+    getData(state) {
       return state.data;
     },
-    getLoading(state){
+    getLoading(state) {
       return state.loading;
-    }
+    },
+    getPopupData(state) {
+      return state.popupData;
+    },
+    getPopupShow(state) {
+      return state.popupShow;
+    },
   },
   mutations: {
-    setSelectedCity(state,payload){
+    setSelectedCity(state, payload) {
       state.selectedCity = payload;
     },
-    setCityText(state,payload){
+    setCityText(state, payload) {
       state.selectedCityOverChange = payload;
     },
-    setSelectedCityOnClick(state,payload){
+    setSelectedCityOnClick(state, payload) {
       state.selectedCityOnClick = payload;
     },
-    setData(state,payload){
+    setData(state, payload) {
       state.data = [];
       state.data.push(payload);
     },
-    setLoading(state,payload){
+    setLoading(state, payload) {
       state.loading = payload;
-    }
+    },
+    setPopupData(state, payload) {
+      state.popupData = [];
+      state.popupData.push(payload);
+    },
+    setPopupShow(state, payload) {
+      state.popupShow = payload;
+    },
   },
-  actions:{
-    setDataAction(context,payload){
-      context.commit('setData',payload);
-      context.commit('setLoading',false);
-    }
+  actions: {
+    setDataAction(context, payload) {
+      context.commit("setData", payload);
+      context.commit("setLoading", false);
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});
