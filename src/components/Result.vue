@@ -2,8 +2,9 @@
   <section class="result" v-if="!loading">
     <div class="row mt-5">
       <div class="col-md-12 text-center">
-        <h1 v-if="cityCount">
-          <b>{{ selectedCity }}</b> için Toplam Sonuç : {{ dutyPharmacy[0] }}
+        <h1 v-if="dutyPharmacy.length">
+          <b>{{ selectedCity }}</b> için Toplam Sonuç :
+          {{ dutyPharmacy[0].length }}
         </h1>
       </div>
     </div>
@@ -11,14 +12,14 @@
       <a
         v-for="(pharmacys, i) in dutyPharmacy[0]"
         :key="i"
-        @click="popupData(pharmacys,i)"
+        @click="popupData(pharmacys, i)"
         class="pharmacy-wrapper d-flex justify-content-between align-items-center col-sm-12 col-lg-4 p-4 mt-3 mb-3 "
       >
         <div class="col-md-6 d-flex justify-content-start align-items-center">
           <span class="pharmacy-letter ">
             {{ pharmacys.name.slice(0, 1) }}
           </span>
-          {{ pharmacys.name.split(' ')[0] }} ECZANESİ
+          {{ pharmacys.name.split(" ")[0] }} ECZANESİ
         </div>
         <div class="vl"></div>
         <div class="col-md-6 d-flex justify-content-center">
@@ -33,46 +34,32 @@
   </section>
 </template>
 <script>
-import { reactive, computed, ref, onBeforeMount, onUpdated } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import Popup from './Popup.vue';
+import Popup from "./Popup.vue";
 export default {
-setup() {
-    const popupIsActive = ref(()=> store.getters.getPopupShow);
+  setup() {
+    const popupIsActive = ref(() => store.getters.getPopupShow);
     const store = useStore();
-    const cityCount = computed(()=> {
-      if (dutyPharmacy[0]){
-        console.log("kassnd");
-        return 0;
-      }
-      return dutyPharmacy[0];
-    });
     const loading = computed(() => store.getters.getLoading);
     const selectedCity = computed(() => store.getters.getSelectedCityOnClick);
-    const dutyPharmacy = computed(() => {
-      return store.getters.getData;
+    const dutyPharmacy = computed(() => store.getters.getData);
+    const popupData = ref((pharmacys) => {
+      popupIsActive.value = true;
+      store.commit("setPopupData", pharmacys);
+      store.commit("setPopupShow", popupIsActive.value);
     });
-     const popupData = ref((pharmacys) => {
-       popupIsActive.value = true;
-       store.commit("setPopupData",pharmacys)
-       store.commit("setPopupShow",popupIsActive.value);
-    });
-
-    // onUpdated(() => {
-    //   cityCount.value = dutyPharmacy.value[0];
-    // });
 
     return {
       popupData,
       popupIsActive,
       dutyPharmacy,
-      cityCount,
       selectedCity,
       loading,
     };
   },
-   components:{
-    Popup
+  components: {
+    Popup,
   },
 };
 </script>
