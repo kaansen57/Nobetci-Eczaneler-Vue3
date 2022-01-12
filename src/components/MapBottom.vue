@@ -75,7 +75,7 @@ h4 {
 }
 .col-md-3:hover h4 {
   transition: color 0.5s ease-in-out;
-  color: #4172a7;
+  color: #ef4848;
 }
 p {
   font-size: 18px;
@@ -91,14 +91,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #609ee0;
-  background-image: linear-gradient(to bottom left, #48c6ef 0%, #6f86d6 100%);
+  background: #ef4848;
+  background-image: linear-gradient(to bottom left, #d66f6f 0%,  #ef4848 100%);
   transition: background-image 0.5s ease;
 }
 
 .col-md-3:hover .icon-container {
-  background: #609ee0;
-  background-image: linear-gradient(to bottom left, #48c6ef 40%, #6f86d6 100%);
   transition: background-image 0.5s ease;
 }
 .i {

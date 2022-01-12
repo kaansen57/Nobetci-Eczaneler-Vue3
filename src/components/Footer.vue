@@ -55,9 +55,13 @@ export default {};
 </script>
 
 <style scoped>
+.flag img{
+  border-radius: 5px;
+  border:1px solid #fff;
+}
 .footer-wave {
   display: block;
-  background: url("../assets/footer-wave.svg");
+  background: url("../assets/footer-wave2.png");
   background-position: center center;
   background-size: cover;
   height: 300px;
@@ -66,8 +70,8 @@ footer {
   padding: 40px;
   min-height: 500px;
   padding-top: 40px;
-  background-color: #74ebd5;
-  background-image: linear-gradient(to bottom left, #6f86d6 0%, #48c6ef 100%);
+  background-color: #ef4848;
+  background-image: linear-gradient(to bottom left, #ef4848 0%, #d66f6f 100%);
 }
 a {
   text-decoration: none;
@@ -103,7 +107,7 @@ ul li {
 }
 
 ul li:hover {
-  color: #372879;
+  color: #792828;
 }
 
 @media screen and (max-width: 768px) {

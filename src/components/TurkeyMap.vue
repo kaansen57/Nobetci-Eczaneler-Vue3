@@ -14,7 +14,7 @@
       xml:space="preserve"
     >
       <g
-        id="turkiye"
+        id="turkey"
         @click="clickedDistrict"
         @mouseover="clickedDistrict"
         @mouseleave="toolTipMouseOut"
@@ -846,7 +846,7 @@
         </g> -->
       </g>
     </svg>
-    <img class="mt-5" src="@/assets/loading.gif" width="150" v-if="loading" />
+    <img class="mt-5" src="@/assets/loading2.gif" width="150" v-if="loading" />
   </div>
 </template>
 
@@ -892,7 +892,7 @@ export default {
     };
 
     const toolTipMouseOver = (city) => {
-      const element = document.querySelector(`g#${city.value}`);
+      // const element = document.querySelector(`g#${city.value}`);
       toolTipClass.left = `${event.pageX}px`;
       toolTipClass.top = ` ${event.pageY - 90}px`;
       toolTipClass.visibility = "visible";
@@ -901,7 +901,6 @@ export default {
     const toolTipMouseOut = () => {
       toolTipClass.visibility = "hidden";
     };
-
     const clickedDistrict = (event) => {
       city.value = event.path[1].id;
       cityText.value = event.path[1].attributes[3].value;
@@ -939,8 +938,8 @@ path {
   transition: fill 0.3s ease-in-out;
 }
 path:hover {
-  fill: #6d8ad8;
-  stroke: #6d8ad8;
+  fill: #ef4848;
+  stroke: #ef4848;
 }
 .tooltiptext {
   visibility: hidden;

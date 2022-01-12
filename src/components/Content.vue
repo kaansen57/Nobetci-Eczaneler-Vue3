@@ -70,4 +70,10 @@ h1 {
 h2 {
   color: #8b92b4;
 }
+@media (max-width: 768px) {
+  h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+}
 </style>

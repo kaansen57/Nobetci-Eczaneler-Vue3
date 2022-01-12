@@ -1,5 +1,5 @@
 <template>
-  <section class="result" v-if="!loading">
+  <section class="result" v-if="!loading" id="results">
     <div class="row mt-5">
       <div class="col-md-12 text-center">
         <h1 v-if="dutyPharmacy.length">

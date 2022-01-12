@@ -95,7 +95,7 @@ export default {
 }
 .content a {
   text-decoration: none;
-  color: #6355f9;
+  color: #ef4848 ;
   font-weight: 800;
   cursor: pointer;
   font-size: 20px;
@@ -112,6 +112,10 @@ export default {
 i {
   cursor: pointer;
   font-size: 28px;
+  transition: transform .5s ease;
+}
+i:hover{
+  transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {
