@@ -44,7 +44,9 @@
       </div>
     </div>
   </header>
-  <div class="header-wave"></div>
+  <div class="header-wave">
+    <img src="../assets/wave2.png" class="wave-img" alt="wave">
+  </div>
 </template>
 
 <script>
@@ -149,12 +151,8 @@ export default {
   align-items: center;
 }
 
-.header-wave {
-  display: block;
-  height: 250px;
-  background: url("../assets/wave2.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+.wave-img{
+  width: 100%;
 }
 ul {
   list-style-type: none;

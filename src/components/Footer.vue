@@ -1,6 +1,8 @@
 <template>
-  <div class="footer-wave" id="contact"></div>
-  <footer>
+  <div class="footer-wave">
+    <img src="../assets/footer-wave2.png" alt="wave" class="wave-img">
+  </div>
+  <footer id="contact">
     <div class="mb-5">
       <div class="col-md-12 text-center">
         <img src="@/assets/logo-ico.png" alt="Nöbetçi Eczaneler" width="40" />
@@ -59,12 +61,9 @@ export default {};
   border-radius: 5px;
   border:1px solid #fff;
 }
-.footer-wave {
-  display: block;
-  background: url("../assets/footer-wave2.png");
-  background-position: center center;
-  background-size: cover;
-  height: 300px;
+
+.wave-img{
+  width:100%;
 }
 footer {
   padding: 40px;
