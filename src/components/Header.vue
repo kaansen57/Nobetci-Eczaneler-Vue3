@@ -246,6 +246,9 @@ a > span {
   
 }
 @media (max-width: 768px) {
+  h3 {
+    margin-top: 0 !important;
+  }
   ul {
     padding: 0;
     display: flex;
@@ -276,7 +279,7 @@ a > span {
   }
    .search{
      width: 200px;
-    margin-top: 1rem;
+     margin: 0;
     transform: scale(.8);
   }
   .search:hover{

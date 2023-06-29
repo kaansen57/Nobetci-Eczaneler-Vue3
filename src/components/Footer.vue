@@ -102,7 +102,7 @@ ul li {
   color: #fff;
   font-size: 20px;
   text-decoration: none;
-  padding: 30px;
+  padding: 10px;
 }
 
 ul li:hover {
@@ -122,6 +122,7 @@ ul li:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 0 !important ;
   }
 }
 </style>
