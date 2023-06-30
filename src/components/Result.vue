@@ -8,7 +8,7 @@
         </h1>
       </div>
     </div>
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around" role="button">
       <a
         v-for="(pharmacys, i) in dutyPharmacy[0]"
         :key="i"
