@@ -8,8 +8,6 @@
         version="1.1"
         id="svg-turkiye-haritasi"
         xmlns="http://www.w3.org/2000/svg"
-        data-iladi=""
-        xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 1007.478 527.323"
         xml:space="preserve"
       >
@@ -901,7 +899,7 @@ export default {
     const config = (city) => {
       const config = {
         method: "GET",
-        url: `${process.env.VUE_APP_API_URL + city.value}`,
+        url: `${process.env.VUE_APP_API_URL + city}`,
         headers: {
           Authorization: process.env.VUE_APP_API_KEY,
         },
@@ -921,7 +919,7 @@ export default {
         });
     };
 
-    const toolTipMouseOver = (city) => {
+    const toolTipMouseOver = () => {
       toolTipClass.left = `${event.pageX}px`;
       toolTipClass.top = ` ${event.pageY - 90}px`;
       toolTipClass.visibility = "visible";
@@ -931,15 +929,15 @@ export default {
       toolTipClass.visibility = "hidden";
     };
     const clickedDistrict = (event) => {
-      city.value = event.path[1].id;
-      cityText.value = event.path[1].attributes[3].value;
-      store.commit("setCityText", cityText);
-      toolTipMouseOver(city);
+      const parentSvgElement = event?.target?.parentElement;
+      cityText.value = parentSvgElement?.attributes['data-iladi']?.value;
+      city.value = parentSvgElement?.id;
+      store.commit("setCityText", cityText.value);
+      toolTipMouseOver();
 
       if (event.type === "click") {
         store.commit("setLoading", true);
-        cityTextClick.value = event.path[1].attributes[3].value;
-        getPharmacy(cityTextClick, city);
+        getPharmacy(cityText.value, city.value);
       }
     };
 
